@@ -4,7 +4,7 @@ This repo is an [opinionated] happy-path implementation of a custom cookie-based
 **CAVEAT:** This is happy-path only and should not be considered production-grade.
 
 ## Contrived Problem Statement/Scenario
-Allow seemless cookie-based authentication across multiple services in a scenario whereby:
+Allow seamless cookie-based authentication across multiple services in a scenario whereby:
 1. The primary application is a ServiceStack implementation (either .NET 5 or .NET Framework)
 2. The primary application currently uses credential authentication, with cookie-based sessions stored in Redis
 3. Secondary API service(s) exist and are implemented in .NET 5
