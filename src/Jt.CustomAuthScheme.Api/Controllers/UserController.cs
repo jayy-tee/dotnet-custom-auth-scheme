@@ -18,6 +18,7 @@ namespace Jt.CustomAuthScheme.Api.Controllers
             return Ok(new
             {
                 Name = currentUser.Identity?.Name,
+                NameIdentifier = currentUser.FindFirstValue(ClaimTypes.NameIdentifier),
                 AuthenticationType = currentUser.Identity?.AuthenticationType,
                 IsAuthenticated = currentUser.Identity?.IsAuthenticated,
                 Roles = currentUser.FindAll(ClaimTypes.Role).Select(c => c.Value)
