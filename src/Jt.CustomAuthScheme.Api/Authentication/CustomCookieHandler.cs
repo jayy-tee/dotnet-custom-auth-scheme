@@ -55,7 +55,7 @@ namespace Jt.CustomAuthScheme.Api.Authentication
 
             if (principal.Identity?.IsAuthenticated == true)
             {
-                response = AuthenticateResult.Success(new AuthenticationTicket(principal, "CustomCookie"));
+                response = AuthenticateResult.Success(new AuthenticationTicket(principal, CustomCookieDefaults.AuthenticationScheme));
             }
 
             return response;
