@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
 namespace Jt.CustomAuthScheme.Api.Authentication
@@ -23,11 +24,11 @@ namespace Jt.CustomAuthScheme.Api.Authentication
             _serviceStackSessionMapper = serviceStackSessionMapper;
         }
 
-        public ClaimsPrincipal GetPrincipalFromSessionCookieValue(string cookieValue)
+        public async Task<ClaimsPrincipal> GetPrincipalFromSessionCookieValue(string cookieValue)
         {
             _logger.LogDebug("Accessing session in redis");
             var db = _redisCache.GetConnection().GetDatabase();
-            var session = db.StringGet($"{SessionPrefix}{cookieValue}");
+            var session = await db.StringGetAsync($"{SessionPrefix}{cookieValue}");
             
             if (!session.HasValue)
             {
