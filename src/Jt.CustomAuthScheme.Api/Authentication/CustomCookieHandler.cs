@@ -51,7 +51,7 @@ namespace Jt.CustomAuthScheme.Api.Authentication
         private async Task<AuthenticateResult> ValidateCookie(string theCookie)
         {
             var response = AuthenticateResult.Fail("Default Failure");
-            var principal = _sessionManager.GetPrincipalFromSessionCookieValue(theCookie);
+            var principal = await _sessionManager.GetPrincipalFromSessionCookieValue(theCookie);
 
             if (principal.Identity?.IsAuthenticated == true)
             {
